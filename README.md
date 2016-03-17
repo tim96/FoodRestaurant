@@ -8,8 +8,10 @@ Todo:
 - [X] ~~Add phpunit local copy~~
 - [X] ~~Find layout~~
 - [X] ~~Add layout to project~~
-- [ ] Import resources for bundle (js, css, images)
-- [ ] Create bundle for solution
+- [X] ~~Setup gulp, bower~~
+- [X] ~~Import resources for bundle (js, css, images).~~
+- [X] ~~Create bundle for solution~~
+- [ ] Improve layout
 - [ ] Add localization files to main layout
-- [ ] Add function to change language
+- [ ] Add function to change language. Add button to layout
 - [ ] Write topics
