@@ -3,6 +3,10 @@ npm install -g bower
 
 bower install jquery
 bower install bootstrap
+bower install moment
+bower install select2
+bower install underscore
+bower install fontawesome
 
 npm install --global gulp
 npm install --save-dev gulp
