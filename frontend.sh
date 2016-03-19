@@ -7,6 +7,9 @@ bower install moment
 bower install select2
 bower install underscore
 bower install fontawesome
+bower install jquery.ui
+bower install eonasdan-bootstrap-datetimepicker
+bower install ionicons
 
 npm install --global gulp
 npm install --save-dev gulp
