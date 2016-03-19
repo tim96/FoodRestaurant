@@ -16,7 +16,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //Custom Theme files -->
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+    {#<link href="css/style.css" type="text/css" rel="stylesheet" media="all">#}
     <!--js-->
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/modernizr.custom.js"></script>
@@ -67,6 +67,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li><a href="codes.html">Codes</a></li>
                             <li><a href="gallery.html">Gallery</a></li>
                             <li><a href="contact.html">Contact</a></li>
+                            <li><a href="/signin">{{ 'label.signin'|trans({}, 'TimFoodRestaurant') }}</a></li>
+                            <li><a href="/login">{{ 'label.login'|trans({}, 'TimFoodRestaurant') }}</a></li>
                         </ul>
                         <div class="clearfix"> </div>
                     </div>

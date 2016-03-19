@@ -12,6 +12,7 @@ Todo:
 - [X] ~~Import resources for bundle (js, css, images).~~
 - [X] ~~Create bundle for solution~~
 - [ ] Improve layout
-- [ ] Add localization files to main layout
+- [X] Add localization files to main layout
 - [ ] Add function to change language. Add button to layout
+- [ ] Add admin area
 - [ ] Write topics
