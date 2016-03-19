@@ -10,6 +10,10 @@ bower install fontawesome
 bower install jquery.ui
 bower install eonasdan-bootstrap-datetimepicker
 bower install ionicons
+bower install animate.css
+bower install Chart.js
+bower install materialize
+bower install intro.js
 
 npm install --global gulp
 npm install --save-dev gulp
