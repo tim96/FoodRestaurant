@@ -14,5 +14,6 @@ Todo:
 - [ ] Improve layout
 - [X] Add localization files to main layout
 - [ ] Add function to change language. Add button to layout
+- [ ] Separate bundles between frontend/backend
 - [ ] Add admin area
 - [ ] Write topics
