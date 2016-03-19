@@ -22,6 +22,7 @@ gulp.task('js', function () {
 gulp.task('css', function () {
     return gulp.src([
             'bower_components/bootstrap/dist/css/bootstrap.css',
+            'bower_components/font-awesome/css/font-awesome.min.css',
             'src/Tim/FoodRestaurantBundle/Resources/public/css/**/*.css'])
         .pipe(gulpif(/[.]less/, less()))
         .pipe(concat('styles.css'))
@@ -36,5 +37,10 @@ gulp.task('img', function() {
         .pipe(gulp.dest('web/img'));
 });
 
+gulp.task('fonts', function() {
+    return gulp.src('bower_components/bootstrap/dist/fonts/**/*.*')
+        .pipe(gulp.dest('web/fonts'));
+});
+
 //define executable tasks when running "gulp" command
-gulp.task('default', ['js', 'css', 'img']);
+gulp.task('default', ['js', 'css', 'img', 'fonts']);
