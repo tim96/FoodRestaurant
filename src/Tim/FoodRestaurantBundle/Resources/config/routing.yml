@@ -1,3 +1,8 @@
 tim_food_restaurant_homepage:
     path:     /
     defaults: { _controller: TimFoodRestaurantBundle:Default:index }
+
+tim_food_restaurant_frontend:
+    resource: "@TimFoodRestaurantBundle/Controller/FrontendController.php"
+    type:     annotation
+    prefix:   /
