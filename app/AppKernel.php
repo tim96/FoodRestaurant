@@ -5,9 +5,24 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+    const ADMIN = 'admin';
+    const API = 'api';
+    const FRONTEND = 'frontend';
+
+    protected $application = null;
+
+    protected $bundleList = array();
+
+    public function __construct($environment, $debug)
+    {
+        parent::__construct($environment, $debug);
+
+        $this->application = $this->getApplicationType();
+    }
+
     public function registerBundles()
     {
-        $bundles = [
+        $this->bundleList = [
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
@@ -15,18 +30,28 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new AppBundle\AppBundle(),
-            new Tim\FoodRestaurantBundle\TimFoodRestaurantBundle(),
         ];
 
-        if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
-            $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
-            $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
-            $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
-            $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+        // main bundle
+        $this->addBundle(new Tim\FoodRestaurantBundle\TimFoodRestaurantBundle());
+
+        if ($this->isNeedLoadAllBundles() || $this->application === self::FRONTEND) {
         }
 
-        return $bundles;
+        if ($this->isNeedLoadAllBundles() || $this->application === self::ADMIN) {
+        }
+
+        if ($this->isNeedLoadAllBundles() || $this->application === self::ADMIN) {
+        }
+
+        if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
+            $this->addBundle(new Symfony\Bundle\DebugBundle\DebugBundle());
+            $this->addBundle(new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle());
+            $this->addBundle(new Sensio\Bundle\DistributionBundle\SensioDistributionBundle());
+            $this->addBundle(new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle());
+        }
+
+        return $this->bundleList;
     }
 
     public function getRootDir()
@@ -47,5 +72,44 @@ class AppKernel extends Kernel
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
+    }
+
+    protected function addBundle($bundle)
+    {
+        if (in_array($bundle, $this->bundleList)) {
+            return false;
+        }
+        $this->bundleList[] = $bundle;
+        return true;
+    }
+
+    protected function isNeedLoadAllBundles()
+    {
+        if (in_array($this->getEnvironment(), array('dev', 'test')) ||
+            $_SERVER['SCRIPT_NAME'] == 'app/console' ||
+            strstr($_SERVER['SCRIPT_NAME'], 'phpunit')
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    protected function getApplicationType()
+    {
+        $url = $_SERVER['REQUEST_URI'];
+        // this line check subdomain
+        // if (strstr($_SERVER['HTTP_HOST'], 'admin.')) {
+        if ($this->isRequestStartsWith($url, '/' . self::ADMIN)) {
+            return self::ADMIN;
+        } elseif ($this->isRequestStartsWith($url, '/' . self::API)) {
+            return self::API;
+        } 
+        
+        return self::FRONTEND;
+    }
+
+    private function isRequestStartsWith($haystack, $needle) {
+        return substr($haystack, 0, strlen($needle)) === $needle;
     }
 }
