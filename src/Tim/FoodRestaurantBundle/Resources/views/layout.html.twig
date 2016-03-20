@@ -67,6 +67,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <li><a href="codes.html">Codes</a></li>
                             <li><a href="gallery.html">Gallery</a></li>
                             <li><a href="contact.html">Contact</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    {{ 'label.change_language'|trans({}, 'TimFoodRestaurant') }} <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('change_language', { 'name' : 'en'}) }}">En (English)</a></li>
+                                    <li><a href="{{ path('change_language', { 'name' : 'fr'}) }}">Fr (Français)</a></li>
+                                    <li><a href="{{ path('change_language', { 'name' : 'ru'}) }}">Ru (Русский)</a></li>
+                                </ul>
+                            </li>
                             <li><a href="/signin">{{ 'label.signin'|trans({}, 'TimFoodRestaurant') }}</a></li>
                             <li><a href="/login">{{ 'label.login'|trans({}, 'TimFoodRestaurant') }}</a></li>
                         </ul>

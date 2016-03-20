@@ -10,6 +10,10 @@
                 <source>label.signin</source>
                 <target>Sign In</target>
             </trans-unit>
+            <trans-unit id="label.change_language">
+                <source>label.change_language</source>
+                <target>Language</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

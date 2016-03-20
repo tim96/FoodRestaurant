@@ -2,3 +2,8 @@ services:
 #    tim_food_restaurant.example:
 #        class: Tim\FoodRestaurantBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+    tim.food_restaurant.event_listener.locale_listener:
+        class: Tim\FoodRestaurantBundle\EventListener\LocaleListener
+        arguments: ["%kernel.default_locale%"]
+        tags:
+            - { name: kernel.event_subscriber }
