@@ -16,5 +16,6 @@ Todo:
 - [X] Add function to change language. Add button to layout
 - [X] Separate bundles between frontend/backend
 - [ ] Add bundle for work with users
+- [ ] Setup user bundle
 - [ ] Add admin area
 - [ ] Write topics
