@@ -1,7 +1,12 @@
+tim_backend:
+    resource: "@TimBackendBundle/Resources/config/routing.yml"
+    prefix:   /
+
 tim_food_restaurant:
     resource: "@TimFoodRestaurantBundle/Resources/config/routing.yml"
     prefix:   /
 
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+#
+#app:
+#    resource: "@AppBundle/Controller/"
+#    type:     annotation
