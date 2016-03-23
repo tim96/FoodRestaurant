@@ -35,13 +35,23 @@ class AppKernel extends Kernel
         // main bundle
         $this->addBundle(new Tim\FoodRestaurantBundle\TimFoodRestaurantBundle());
 
+        $this->addBundle(new \FOS\UserBundle\FOSUserBundle());
+        $this->addBundle(new \TimBackendBundle\TimBackendBundle());
+        $this->addBundle(new \Sonata\CoreBundle\SonataCoreBundle());
+        $this->addBundle(new \Sonata\BlockBundle\SonataBlockBundle());
+        $this->addBundle(new \Knp\Bundle\MenuBundle\KnpMenuBundle());
+        $this->addBundle(new \Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle());
+        $this->addBundle(new \Sonata\AdminBundle\SonataAdminBundle());
+        $this->addBundle(new \Sonata\UserBundle\SonataUserBundle('FOSUserBundle'));
+
+        // todo: rewrite this solutions
         if ($this->isNeedLoadAllBundles() || $this->application === self::FRONTEND) {
         }
 
         if ($this->isNeedLoadAllBundles() || $this->application === self::ADMIN) {
         }
 
-        if ($this->isNeedLoadAllBundles() || $this->application === self::ADMIN) {
+        if ($this->isNeedLoadAllBundles() || $this->application === self::API) {
         }
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
@@ -85,7 +95,8 @@ class AppKernel extends Kernel
 
     protected function isNeedLoadAllBundles()
     {
-        if (in_array($this->getEnvironment(), array('dev', 'test')) ||
+        // if (in_array($this->getEnvironment(), array('dev', 'test')) ||
+        if (in_array($this->getEnvironment(), array('test')) ||
             $_SERVER['SCRIPT_NAME'] == 'app/console' ||
             strstr($_SERVER['SCRIPT_NAME'], 'phpunit')
         ) {
@@ -97,15 +108,17 @@ class AppKernel extends Kernel
 
     protected function getApplicationType()
     {
-        $url = $_SERVER['REQUEST_URI'];
-        // this line check subdomain
-        // if (strstr($_SERVER['HTTP_HOST'], 'admin.')) {
-        if ($this->isRequestStartsWith($url, '/' . self::ADMIN)) {
-            return self::ADMIN;
-        } elseif ($this->isRequestStartsWith($url, '/' . self::API)) {
-            return self::API;
-        } 
-        
+        if (isset($_SERVER['REQUEST_URI'])) {
+            $url = $_SERVER['REQUEST_URI'];
+            // this line check subdomain
+            // if (strstr($_SERVER['HTTP_HOST'], 'admin.')) {
+            if ($this->isRequestStartsWith($url, '/' . self::ADMIN)) {
+                return self::ADMIN;
+            } elseif ($this->isRequestStartsWith($url, '/' . self::API)) {
+                return self::API;
+            }
+        }
+
         return self::FRONTEND;
     }
 
