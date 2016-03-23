@@ -1,6 +1,9 @@
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
-    firewall_name: main
+    firewall_name: admin
     user_class: TimBackendBundle\Entity\User
     group:
         group_class: TimBackendBundle\Entity\Group
+        group_manager: sonata.user.orm.group_manager
+    service:
+        user_manager: sonata.user.orm.user_manager
