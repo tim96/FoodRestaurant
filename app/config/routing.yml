@@ -6,6 +6,10 @@ tim_food_restaurant:
     resource: "@TimFoodRestaurantBundle/Resources/config/routing.yml"
     prefix:   /
 
+sonata_admin:
+    resource: "routing_sonata.yml"
+    prefix:   /
+
 #
 #app:
 #    resource: "@AppBundle/Controller/"
