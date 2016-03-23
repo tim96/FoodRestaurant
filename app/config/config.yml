@@ -2,7 +2,6 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-    - { resource: "@TimBackendBundle/Resources/config/services.yml" }
     - { resource: fosuser.yml }
     - { resource: sonata.yml }
 
