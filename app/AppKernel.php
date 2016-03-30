@@ -35,24 +35,26 @@ class AppKernel extends Kernel
         // main bundle
         $this->addBundle(new Tim\FoodRestaurantBundle\TimFoodRestaurantBundle());
 
-        $this->addBundle(new \FOS\UserBundle\FOSUserBundle());
-        $this->addBundle(new \TimBackendBundle\TimBackendBundle());
+        // backend bundles
+        $this->addBundle(new FOS\UserBundle\FOSUserBundle());
         $this->addBundle(new \Sonata\CoreBundle\SonataCoreBundle());
         $this->addBundle(new \Sonata\BlockBundle\SonataBlockBundle());
         $this->addBundle(new \Knp\Bundle\MenuBundle\KnpMenuBundle());
         $this->addBundle(new \Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle());
         $this->addBundle(new \Sonata\AdminBundle\SonataAdminBundle());
-        $this->addBundle(new \Sonata\UserBundle\SonataUserBundle('FOSUserBundle'));
+        $this->addBundle(new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'));
 
-        // todo: rewrite this solutions
-        if ($this->isNeedLoadAllBundles() || $this->application === self::FRONTEND) {
-        }
+        $this->addBundle(new Application\Sonata\UserBundle\ApplicationSonataUserBundle());
 
-        if ($this->isNeedLoadAllBundles() || $this->application === self::ADMIN) {
-        }
-
-        if ($this->isNeedLoadAllBundles() || $this->application === self::API) {
-        }
+//        // todo: rewrite this solutions !!!
+//        if ($this->isNeedLoadAllBundles() || $this->application === self::FRONTEND) {
+//        }
+//
+//        if ($this->isNeedLoadAllBundles() || $this->application === self::ADMIN) {
+//        }
+//
+//        if ($this->isNeedLoadAllBundles() || $this->application === self::API) {
+//        }
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $this->addBundle(new Symfony\Bundle\DebugBundle\DebugBundle());
