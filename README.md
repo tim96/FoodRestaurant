@@ -1,6 +1,10 @@
 # FoodRestaurant
 Symfony 3 application. Tutorial.
 
+At this moment downgrade to symfony 2.8 because symfony 3.0 is not LTS.
+http://symfony.com/doc/current/contributing/community/releases.html#schedule
+
+
 Todo:
 
 - [X] ~~Install symfony 3~~
